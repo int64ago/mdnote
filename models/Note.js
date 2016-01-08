@@ -1,0 +1,61 @@
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var noteSchema = new Schema({
+    create: Date,
+    lastVisit: Date,
+    lastUpdate: Date,
+    visitCount: {
+        type: Number,
+        default: 0
+    },
+    text: {
+        type: String,
+        default: ''
+    }
+}, {
+    versionKey: false
+});
+
+noteSchema.statics = {
+    newNote: function(callback) {
+        var note = this({
+            create: new Date(),
+            lastVisit: new Date(),
+            lastUpdate: new Date()
+        });
+        note.save(callback);
+    },
+    getNote: function(id, callback) {
+        this.update({
+            _id: id
+        }, {
+            $inc: {
+                visitCount: 1
+            },
+            $set: {
+                lastVisit: new Date()
+            }
+        }).exec();
+        this.findOne({
+            _id: id
+        }).exec(callback);
+    },
+    updateNote: function(id, text, callback) {
+        var self = this;
+        self.update({
+            _id: id
+        }, {
+            $set: {
+                lastUpdate: new Date(),
+                text: text
+            }
+        }).exec(function(err, result) {
+            self.findOne({
+                _id: id
+            }).exec(callback);
+        })
+    }
+};
+
+mongoose.model('Note', noteSchema);

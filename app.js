@@ -1,0 +1,70 @@
+var fs = require('fs');
+var join = require('path').join;
+var express = require('express');
+var mongoose = require('mongoose')
+var bodyParser = require('body-parser');
+var app = express();
+var index = express.Router();
+
+app.set('view engine', 'ejs');
+
+require('app-module-path').addPath(__dirname + '/controllers');
+
+var connect = function() {
+    var options = {
+        server: {
+            socketOptions: {
+                keepAlive: 1
+            }
+        }
+    };
+    if (process.env.VCAP_SERVICES) {
+        var env = JSON.parse(process.env.VCAP_SERVICES);
+        if (env['mongodb-2.4']) {
+            mongoose.connect(env['mongodb-2.4'].credentials.url, options);
+        } else {
+            console.log('No mongodb!');
+        }
+    } else {
+        mongoose.connect('mongodb://localhost/mdnote', options);
+    }
+};
+connect();
+mongoose.connection.on('error', console.log);
+mongoose.connection.on('disconnected', connect);
+
+
+fs.readdirSync(join(__dirname, 'models')).forEach(function(file) {
+    if (~file.indexOf('.js')) require(join(__dirname, 'models', file));
+});
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.get('/', function(req, res) {
+    var Note = mongoose.model('Note');
+    Note.newNote(function(err, result) {
+        if (result) {
+            res.redirect('/' + result._id);
+        } else {
+            res.redirect('https://github.com/int64ago/mdnote');
+        }
+    });
+});
+
+app.get('/404', function(req, res) {
+    res.render('404');
+});
+
+app.get('/:id', function(req, res) {
+    res.render('index');
+});
+
+app.use('/static', express.static(__dirname + '/static'));
+
+index.use('/note', require('note'));
+app.use('/api', index);
+
+app.listen(process.env.VCAP_APP_PORT || 3000);

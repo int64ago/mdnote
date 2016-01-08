@@ -1,0 +1,27 @@
+{
+  "name": "mdnote",
+  "version": "1.0.0",
+  "description": "A cloud notepad",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/int64ago/mdnote.git"
+  },
+  "author": "Cody Chan <int64ago@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/int64ago/mdnote/issues"
+  },
+  "homepage": "https://mdnote.xyz",
+  "dependencies": {
+    "app-module-path": "^1.0.5",
+    "body-parser": "^1.14.2",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "mongoose": "^4.3.4"
+  }
+}
