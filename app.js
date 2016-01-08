@@ -18,16 +18,19 @@ var connect = function() {
             }
         }
     };
+    // Bluemix && Mongolab
     if (process.env.VCAP_SERVICES) {
-        var env = JSON.parse(process.env.VCAP_SERVICES);
-        if (env['mongodb-2.4']) {
-            mongoose.connect(env['mongodb-2.4'].credentials.url, options);
-        } else {
-            console.log('No mongodb!');
-        }
+        var credentials = JSON.parse(process.env.VCAP_SERVICES)['user-provided'][0].credentials;
+        var dbuser = credentials.user,
+            dbpassword = credentials.password,
+            host = credentials.uri,
+            port = credentials.port;
+        var mongdbUrl = 'mongodb://' + dbuser + ':' + dbpassword + '@' + host + ':' + port + '/mdnote';
+        mongoose.connect(mongdbUrl, options);
     } else {
         mongoose.connect('mongodb://localhost/mdnote', options);
     }
+
 };
 connect();
 mongoose.connection.on('error', console.log);
