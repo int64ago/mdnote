@@ -27,6 +27,11 @@
             $('#create-time').text(formatDate(data.note.create));
             $('#last-visit').text(formatDate(data.note.lastVisit));
             $('#last-update').text(formatDate(data.note.lastUpdate));
+            if (data.note.readonly) {
+                $('#readonly').addClass('disabled');
+                $('#readonly input').prop('checked', true);
+                $('textarea').prop('disabled', true);
+            }
         } else {
             window.location.href = '/404';
         }
@@ -38,6 +43,15 @@
         isModified = true;
         $('#text-length').text($('textarea').val().length);
         downCount = 10;
+    });
+
+    $('#readonly').checkbox({
+        onChecked: function() {
+            $.post('/api/note/readonly/' + id, function(data) {
+                $('#readonly').addClass('disabled');
+                $('textarea').prop('disabled', true);
+            });
+        }
     });
 
     setInterval(function() {
@@ -52,7 +66,7 @@
             $.post('/api/note/' + id, {
                 text: $('textarea').val()
             }, function(data) {
-                if (data && data.note) {
+                if (data && data.note && !data.note.readonly) {
                     $('#last-update').text(formatDate(data.note.lastUpdate));
                     $('#last-update').parent().addClass('green');
                     setTimeout(function() {
