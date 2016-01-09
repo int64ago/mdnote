@@ -30,7 +30,7 @@
             if (data.note.readonly) {
                 $('#readonly').addClass('disabled');
                 $('#readonly input').prop('checked', true);
-                $('textarea').prop('disabled', true);
+                $('textarea').prop('readonly', true);
             }
         } else {
             window.location.href = '/404';
@@ -49,7 +49,7 @@
         onChecked: function() {
             $.post('/api/note/readonly/' + id, function(data) {
                 $('#readonly').addClass('disabled');
-                $('textarea').prop('disabled', true);
+                $('textarea').prop('readonly', true);
             });
         }
     });
