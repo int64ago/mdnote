@@ -5,6 +5,10 @@ var noteSchema = new Schema({
     create: Date,
     lastVisit: Date,
     lastUpdate: Date,
+    readonly: {
+        type: Boolean,
+        default: false
+    },
     visitCount: {
         type: Number,
         default: 0
@@ -44,7 +48,8 @@ noteSchema.statics = {
     updateNote: function(id, text, callback) {
         var self = this;
         self.update({
-            _id: id
+            _id: id,
+            readonly: false
         }, {
             $set: {
                 lastUpdate: new Date(),
@@ -54,7 +59,21 @@ noteSchema.statics = {
             self.findOne({
                 _id: id
             }).exec(callback);
-        })
+        });
+    },
+    setReadonly: function(id, callback) {
+        var self = this;
+        self.update({
+            _id: id
+        }, {
+            $set: {
+                readonly: true
+            }
+        }).exec(function(err, result) {
+            self.findOne({
+                _id: id
+            }).exec(callback);
+        });
     }
 };
 

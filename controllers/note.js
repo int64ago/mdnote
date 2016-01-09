@@ -31,4 +31,18 @@ note.post('/:id', function(req, res) {
     }
 });
 
+note.post('/readonly/:id', function(req, res) {
+    if (req.params.id && req.params.id.length === 24) {
+        Note.setReadonly(req.params.id, function(err, result) {
+            res.json({
+                note: result
+            });
+        });
+    } else {
+        res.json({
+            note: null
+        });
+    }
+});
+
 module.exports = note;

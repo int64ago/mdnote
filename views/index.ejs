@@ -15,10 +15,53 @@
 <body>
     <div class="ui container">
         <h1 class="ui header">Share the link to others</h1>
-        <div class="ui form">
-            <div class="field">
-                <textarea rows="20"></textarea>
-                <span id="update-time"></span>
+        <div class="ui grid">
+            <div class="thirteen wide column">
+                <div class="ui form">
+                    <div class="field">
+                        <textarea rows="20"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <div class="ui relaxed divided list">
+                    <div class="item">
+                        <div class="ui checkbox" id="readonly">
+                            <input type="checkbox" name="readonly">
+                            <label>Readonly</label>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="ui label">
+                            <i class="file text outline icon"></i>
+                            <span id="text-length"></span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="ui label">
+                            <i class="pointing up icon"></i>
+                            <span id="visit-count"></span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="ui label">
+                            <i class="calendar icon"></i>
+                            <span id="create-time"></span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="ui label">
+                            <i class="unhide icon"></i>
+                            <span id="last-visit"></span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="ui label">
+                            <i class="write icon"></i>
+                            <span id="last-update"></span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
