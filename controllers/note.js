@@ -18,7 +18,7 @@ note.get('/:id', function(req, res) {
 });
 
 note.post('/:id', function(req, res) {
-    if (req.params.id && req.params.id.length === 24) {
+    if (req.params.id && req.params.id.length === 24 && req.body.text && req.body.text <= 65536) {
         Note.updateNote(req.params.id, req.body.text || '', function(err, result) {
             res.json({
                 note: result
