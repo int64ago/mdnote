@@ -19,12 +19,19 @@
             <div class="thirteen wide column">
                 <div class="ui form">
                     <div class="field">
-                        <textarea rows="20"></textarea>
+                        <textarea rows="20" id="textarea"></textarea>
                     </div>
                 </div>
             </div>
             <div class="three wide column">
                 <div class="ui relaxed divided list">
+                    <div class="item">
+                        <div class="tiny ui buttons">
+                            <button class="ui teal button" id="copy-url">Copy URL</button>
+                            <div class="or" data-text="-" id="copy-status"></div>
+                            <button class="ui teal button" id="copy-text" data-clipboard-target="#textarea">Copy Text</button>
+                        </div>
+                    </div>
                     <div class="item">
                         <div class="ui checkbox" id="readonly">
                             <input type="checkbox" name="readonly">
@@ -67,6 +74,7 @@
     </div>
     <script src="//dn-cdnjs-cn.qbox.me/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="//dn-cdnjs-cn.qbox.me/ajax/libs/semantic-ui/2.1.8/semantic.min.js"></script>
+    <script src="//dn-cdnjs-cn.qbox.me/ajax/libs/clipboard.js/1.5.5/clipboard.min.js"></script>
     <script src="/static/js/main.js"></script>
 </body>
 
