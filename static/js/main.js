@@ -18,9 +18,10 @@
         return new Date(date).Format("yyyy-MM-dd hh:mm:ss");
     };
 
-    var id = window.location.pathname.substring(1);
+    var oldValue, id = window.location.pathname.substring(1);
     $.get('/api/note/' + id, function(data) {
         if (data && data.note) {
+            oldValue = data.note.text;
             $('textarea').val(data.note.text);
             $('#text-length').text(data.note.text.length);
             $('#visit-count').text(data.note.visitCount);
@@ -40,9 +41,12 @@
     var isModified = false,
         downCount = 0;
     $('textarea').on('change keyup paste', function() {
-        isModified = true;
-        $('#text-length').text($('textarea').val().length);
-        downCount = 10;
+        if (this.value != oldValue) {
+            oldValue = this.value;
+            isModified = true;
+            $('#text-length').text($('textarea').val().length);
+            downCount = 10;
+        }
     });
 
     $('#readonly').checkbox({
