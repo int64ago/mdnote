@@ -10,3 +10,11 @@ body {
     color: rgba(34, 36, 38, .1);
     font-family: 'Architects Daughter', cursive;
 }
+
+.ui .header {
+	cursor: pointer;
+}
+
+.ui .header:hover{
+	color: rgb(78, 157, 237);
+}

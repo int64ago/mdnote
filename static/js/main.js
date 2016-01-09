@@ -87,6 +87,10 @@
         }, 1000);
     });
 
+    $('.ui .header').on('click', function() {
+        window.location.href = '/';
+    });
+
     setInterval(function() {
         if (downCount > 0) {
             downCount -= 1;
