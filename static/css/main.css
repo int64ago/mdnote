@@ -11,10 +11,10 @@ body {
     font-family: 'Architects Daughter', cursive;
 }
 
-.ui .header {
+.ui .header span{
 	cursor: pointer;
 }
 
-.ui .header:hover{
+.ui .header span:hover{
 	color: rgb(78, 157, 237);
 }

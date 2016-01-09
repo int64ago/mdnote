@@ -87,7 +87,7 @@
         }, 1000);
     });
 
-    $('.ui .header').on('click', function() {
+    $('.ui .header span').on('click', function() {
         window.location.href = '/';
     });
 
