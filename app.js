@@ -3,6 +3,7 @@ var join = require('path').join;
 var express = require('express');
 var mongoose = require('mongoose')
 var bodyParser = require('body-parser');
+var request = require("request");
 var app = express();
 var index = express.Router();
 
@@ -47,12 +48,20 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/', function(req, res) {
-    var Note = mongoose.model('Note');
-    Note.newNote(function(err, result) {
-        if (result) {
-            res.redirect('/' + result._id);
+    var UACheckUrl = 'http://www.useragentstring.com/?getJSON=agent_type&uas=';
+    request(UACheckUrl + req.headers['user-agent'], function(error, response, body) {
+        var agentType = JSON.parse(body)['agent_type'];
+        if (agentType === 'Crawler' || agentType === 'Offline Browser') {
+            res.render('index');
         } else {
-            res.redirect('https://github.com/int64ago/mdnote');
+            var Note = mongoose.model('Note');
+            Note.newNote(function(err, result) {
+                if (result) {
+                    res.redirect('/' + result._id);
+                } else {
+                    res.redirect('https://github.com/int64ago/mdnote');
+                }
+            });
         }
     });
 });

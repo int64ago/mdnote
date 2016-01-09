@@ -19,24 +19,28 @@
     };
 
     var oldValue, id = window.location.pathname.substring(1);
-    $.get('/api/note/' + id, function(data) {
-        if (data && data.note) {
-            oldValue = data.note.text;
-            $('textarea').val(data.note.text);
-            $('#text-length').text(data.note.text.length);
-            $('#visit-count').text(data.note.visitCount);
-            $('#create-time').text(formatDate(data.note.create));
-            $('#last-visit').text(formatDate(data.note.lastVisit));
-            $('#last-update').text(formatDate(data.note.lastUpdate));
-            if (data.note.readonly) {
-                $('#readonly').addClass('disabled');
-                $('#readonly input').prop('checked', true);
-                $('textarea').prop('readonly', true);
+    if (!id) {
+        $('textarea').val('Are you a spider?!\nIf anything wrong, please raise an issue on GitHub.');
+    } else {
+        $.get('/api/note/' + id, function(data) {
+            if (data && data.note) {
+                oldValue = data.note.text;
+                $('textarea').val(data.note.text);
+                $('#text-length').text(data.note.text.length);
+                $('#visit-count').text(data.note.visitCount);
+                $('#create-time').text(formatDate(data.note.create));
+                $('#last-visit').text(formatDate(data.note.lastVisit));
+                $('#last-update').text(formatDate(data.note.lastUpdate));
+                if (data.note.readonly) {
+                    $('#readonly').addClass('disabled');
+                    $('#readonly input').prop('checked', true);
+                    $('textarea').prop('readonly', true);
+                }
+            } else {
+                window.location.href = '/404';
             }
-        } else {
-            window.location.href = '/404';
-        }
-    });
+        });
+    }
 
     var isModified = false,
         downCount = 0;

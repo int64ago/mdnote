@@ -22,6 +22,7 @@
     "body-parser": "^1.14.2",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
-    "mongoose": "^4.3.4"
+    "mongoose": "^4.3.4",
+    "request": "^2.67.0"
   }
 }
