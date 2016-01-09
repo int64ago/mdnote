@@ -5,6 +5,14 @@ var noteSchema = new Schema({
     create: Date,
     lastVisit: Date,
     lastUpdate: Date,
+    password: {
+        type: String,
+        default: ''
+    },
+    markdown: {
+        type: Boolean,
+        default: false
+    },
     readonly: {
         type: Boolean,
         default: false
