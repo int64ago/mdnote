@@ -13,6 +13,18 @@
 </head>
 
 <body>
+    <div class="ui modal">
+        <div class="header">
+            Warnning
+        </div>
+        <div class="content">
+            Nobody(and you) can uncheck if it's checked!
+        </div>
+        <div class="actions">
+            <div class="ui deny button">Cancel</div>
+            <div class="ui ok button">OK</div>
+        </div>
+    </div>
     <div class="ui container">
         <h1 class="ui header">
             <span>Let's make a note on cloud :-)</span>
@@ -40,45 +52,45 @@
                             <label>Readonly</label>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="ui toggle checkbox" id="markdown-view" title="Coming soon...">
+                    <div class="item" title="Coming soon...">
+                        <div class="ui toggle checkbox" id="markdown-view">
                             <input type="checkbox" name="markdown-view" disabled>
                             <label for="markdown-view">Markdown View</label>
                         </div>
                     </div>
                     <div class="item">
-                        <div class="ui label" title="Text Length">
+                        <div class="ui label" data-content="Text Length" data-variation="mini inverted" data-position="right center">
                             <i class="file text outline icon"></i>
                             <span id="text-length"></span> / 65536
                         </div>
                     </div>
                     <div class="item">
-                        <div class="ui label" title="Visit Count">
+                        <div class="ui label" data-content="Visit Count" data-variation="mini inverted" data-position="right center">
                             <i class="pointing up icon"></i>
                             <span id="visit-count"></span>
                         </div>
                     </div>
                     <div class="item">
-                        <div class="ui label" title="Create Date">
+                        <div class="ui label" data-content="Create Date" data-variation="mini inverted" data-position="right center">
                             <i class="calendar icon"></i>
                             <span id="create-time"></span>
                         </div>
                     </div>
                     <div class="item">
-                        <div class="ui label" title="Last Visit Date">
+                        <div class="ui label" data-content="Last Visit Date" data-variation="mini inverted" data-position="right center">
                             <i class="unhide icon"></i>
                             <span id="last-visit"></span>
                         </div>
                     </div>
                     <div class="item">
-                        <div class="ui label" title="Last Update Date">
+                        <div class="ui label" data-content="Last Update Date" data-variation="mini inverted" data-position="right center">
                             <i class="write icon"></i>
                             <span id="last-update"></span>
                         </div>
                     </div>
                     <div class="item">
                         <a href="https://github.com/int64ago/mdnote" target="_blank">
-                            <i class="large github icon"></i>
+                            <i class="huge github icon"></i>
                         </a>
                     </div>
                 </div>

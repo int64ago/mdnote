@@ -55,10 +55,20 @@
 
     $('#readonly').checkbox({
         onChecked: function() {
-            $.post('/api/note/readonly/' + id, function(data) {
-                $('#readonly').addClass('disabled');
-                $('textarea').prop('readonly', true);
-            });
+            $('.ui.modal')
+                .modal({
+                    closable: false,
+                    onDeny: function() {
+                        $('#readonly input').prop('checked', false);
+                    },
+                    onApprove: function() {
+                        $.post('/api/note/readonly/' + id, function(data) {
+                            $('#readonly').addClass('disabled');
+                            $('textarea').prop('readonly', true);
+                        });
+                    }
+                })
+                .modal('show');
         }
     });
 
@@ -94,6 +104,7 @@
     $('.ui .header span').on('click', function() {
         window.location.href = '/';
     });
+    $('.list .item > div').popup();
 
     setInterval(function() {
         if (downCount > 0) {
