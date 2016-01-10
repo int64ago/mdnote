@@ -1,5 +1,9 @@
+html {
+    height: auto;
+}
+
 body {
-    overflow: hidden;
+    overflow: auto;
 }
 
 .ui.container {
@@ -7,14 +11,15 @@ body {
 }
 
 .ui.container .header {
+    font-size: 1.8rem;
     color: rgba(34, 36, 38, .1);
     font-family: 'Architects Daughter', cursive;
 }
 
-.ui .header span{
-	cursor: pointer;
+.ui .header span {
+    cursor: pointer;
 }
 
-.ui .header span:hover{
-	color: rgb(78, 157, 237);
+.ui .header span:hover {
+    color: rgb(78, 157, 237);
 }
