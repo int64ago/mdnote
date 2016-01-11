@@ -1,0 +1,9 @@
+.ui.container {
+    margin-top: 200px;
+}
+
+@media (min-width: 600px) {
+	.ui.container .header {
+	    font-size: 4rem;
+	}
+}

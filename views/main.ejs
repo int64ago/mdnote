@@ -1,0 +1,72 @@
+<div class="ui container">
+    <h1 class="ui header">
+        <span><i class="pointing right icon"></i>Make a note on cloud :-)</span>
+    </h1>
+    <div class="ui stackable grid">
+        <div class="thirteen wide column">
+            <div class="ui form">
+                <div class="field">
+                    <textarea maxlength="65536" rows="20" id="textarea"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="three wide column">
+            <div class="ui relaxed divided list">
+                <div class="item">
+                    <div class="tiny ui buttons">
+                        <button class="ui teal button" id="copy-url">Copy URL</button>
+                        <div class="or" data-text="-" id="copy-status"></div>
+                        <button class="ui teal button" id="copy-text" data-clipboard-target="#textarea">Copy Text</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ui toggle checkbox" id="readonly">
+                        <input type="checkbox" name="readonly">
+                        <label>Readonly</label>
+                    </div>
+                </div>
+                <div class="item" title="Coming soon...">
+                    <div class="ui toggle checkbox" id="markdown-view">
+                        <input type="checkbox" name="markdown-view" disabled>
+                        <label for="markdown-view">Markdown View</label>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ui label" data-content="Text Length" data-variation="mini inverted" data-position="right center">
+                        <i class="file text outline icon"></i>
+                        <span id="text-length"></span> / 65536
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ui label" data-content="Visit Count" data-variation="mini inverted" data-position="right center">
+                        <i class="pointing up icon"></i>
+                        <span id="visit-count"></span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ui label" data-content="Create Date" data-variation="mini inverted" data-position="right center">
+                        <i class="calendar icon"></i>
+                        <span id="create-time"></span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ui label" data-content="Last Visit Date" data-variation="mini inverted" data-position="right center">
+                        <i class="unhide icon"></i>
+                        <span id="last-visit"></span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ui label" data-content="Last Update Date" data-variation="mini inverted" data-position="right center">
+                        <i class="write icon"></i>
+                        <span id="last-update"></span>
+                    </div>
+                </div>
+                <div class="item">
+                    <a href="https://github.com/int64ago/mdnote" target="_blank">
+                        <i class="huge github icon"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
