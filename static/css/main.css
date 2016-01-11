@@ -16,8 +16,12 @@ body {
     font-family: 'Architects Daughter', cursive;
 }
 
-.ui .header span {
+.ui .header span:nth-child(1) {
     cursor: pointer;
+}
+
+.ui .header span:nth-child(2) {
+    display: none;
 }
 
 .ui .header span:hover {

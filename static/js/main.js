@@ -101,7 +101,9 @@
         }, 1000);
     });
 
-    $('.ui .header span').on('click', function() {
+    $('.ui .header span:nth-child(1)').on('click', function() {
+        $('.ui .header span:nth-child(1)').hide();
+        $('.ui .header span:nth-child(2)').show();
         $.get('/new', function(data) {
             window.location.href = data;
         });
