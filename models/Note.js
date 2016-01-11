@@ -82,6 +82,20 @@ noteSchema.statics = {
                 _id: id
             }).exec(callback);
         });
+    },
+    setMarkdown: function(id, status, callback) {
+        var self = this;
+        self.update({
+            _id: id
+        }, {
+            $set: {
+                markdown: status
+            }
+        }).exec(function(err, result) {
+            self.findOne({
+                _id: id
+            }).exec(callback);
+        });
     }
 };
 

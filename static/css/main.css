@@ -27,3 +27,7 @@ body {
 .ui .header span:hover {
     color: rgb(78, 157, 237);
 }
+
+.ui.form .segment {
+	display: none;
+}

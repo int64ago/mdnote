@@ -36,6 +36,15 @@
                     $('#readonly input').prop('checked', true);
                     $('textarea').prop('readonly', true);
                 }
+                if (data.note.markdown) {
+                    $('#markdown-view input').prop('checked', true);
+                    $('.ui.form .segment').html(marked($('textarea').val()));
+                    $('.ui.form .segment').show();
+                    $('textarea').hide();
+                    $('pre code').each(function(i, block) {
+                        hljs.highlightBlock(block);
+                    });
+                }
             } else {
                 window.location.href = '/404';
             }

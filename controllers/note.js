@@ -46,4 +46,18 @@ note.post('/readonly/:id', function(req, res) {
     }
 });
 
+note.post('/markdown/:id', function(req, res) {
+    if (req.params.id && req.params.id.length === 24) {
+        Note.setMarkdown(req.params.id, req.body.status || false, function(err, result) {
+            res.json({
+                note: result
+            });
+        });
+    } else {
+        res.json({
+            note: null
+        });
+    }
+});
+
 module.exports = note;

@@ -1,9 +1,11 @@
 CACHE MANIFEST
-# 2016-01-11 13:46
+# 2016-01-11 15:11
 /static/imgs/favicon.ico
 /static/css/main.css
 /static/css/index.css
+/static/css/github-markdown.css
 /static/js/main.js
+/static/js/md.js
 
 NETWORK:
 *
