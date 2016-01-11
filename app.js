@@ -48,20 +48,16 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/', function(req, res) {
-    var UACheckUrl = 'http://www.useragentstring.com/?getJSON=agent_type&uas=';
-    request(UACheckUrl + req.headers['user-agent'], function(error, response, body) {
-        var agentType = JSON.parse(body)['agent_type'];
-        if (agentType === 'Crawler' || agentType === 'Offline Browser') {
-            res.render('index');
+    res.render('index');
+});
+
+app.get('/new', function(req, res) {
+    var Note = mongoose.model('Note');
+    Note.newNote(function(err, result) {
+        if (result) {
+            res.send('/' + result._id);
         } else {
-            var Note = mongoose.model('Note');
-            Note.newNote(function(err, result) {
-                if (result) {
-                    res.redirect('/' + result._id);
-                } else {
-                    res.redirect('https://github.com/int64ago/mdnote');
-                }
-            });
+            res.send('https://github.com/int64ago/mdnote');
         }
     });
 });
@@ -71,7 +67,7 @@ app.get('/404', function(req, res) {
 });
 
 app.get('/:id', function(req, res) {
-    res.render('index');
+    res.render('note');
 });
 
 app.use('/static', express.static(__dirname + '/static'));

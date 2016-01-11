@@ -19,6 +19,7 @@
   "homepage": "https://mdnote.xyz",
   "dependencies": {
     "app-module-path": "^1.0.5",
+    "avoscloud-sdk": "^0.6.7",
     "body-parser": "^1.14.2",
     "ejs": "^2.3.4",
     "express": "^4.13.3",

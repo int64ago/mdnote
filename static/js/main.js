@@ -102,7 +102,9 @@
     });
 
     $('.ui .header span').on('click', function() {
-        window.location.href = '/';
+        $.get('/new', function(data) {
+            window.location.href = data;
+        });
     });
     $('.list .item > div').popup();
 
