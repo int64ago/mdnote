@@ -72,9 +72,10 @@
                     },
                     onApprove: function() {
                         $.post('/api/note/readonly/' + id, function(data) {
-                            $('#readonly').addClass('disabled');
-                            $('textarea').prop('readonly', true);
+                            //
                         });
+                        $('#readonly').addClass('disabled');
+                        $('textarea').prop('readonly', true);
                     }
                 })
                 .modal('show');
