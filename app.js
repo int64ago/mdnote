@@ -8,6 +8,7 @@ var app = express();
 var index = express.Router();
 
 app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
 
 require('app-module-path').addPath(__dirname + '/controllers');
 
