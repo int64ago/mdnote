@@ -6,6 +6,9 @@ CACHE MANIFEST
 /static/css/github-markdown.css
 /static/js/main.js
 /static/js/md.js
+/static/libs/semantic/semantic.min.css
+/static/libs/semantic/semantic.min.js
+/static/libs/semantic/themes/default/assets/fonts/icons.woff2
 
 NETWORK:
 *
