@@ -60,7 +60,7 @@
             oldValue = this.value;
             isModified = true;
             $('#text-length').text($('textarea').val().length);
-            downCount = 10;
+            downCount = 5;
         }
     });
 
