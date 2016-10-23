@@ -19,6 +19,7 @@
     };
 
     var oldValue, id = window.location.pathname.substring(1);
+    var qrUrl = 'https://qr.302.at/chart?chs=150x150&cht=qr&choe=UTF-8&chl=';
     if (!id) {
         $('textarea').val('Are you a spider?!\nIf anything wrong, please raise an issue on GitHub.');
     } else {
@@ -31,6 +32,7 @@
                 $('#create-time').text(formatDate(data.note.create));
                 $('#last-visit').text(formatDate(data.note.lastVisit));
                 $('#last-update').text(formatDate(data.note.lastUpdate));
+                $('#qrcode').attr('src', qrUrl + location.href);
                 if (data.note.readonly) {
                     $('#readonly').addClass('disabled');
                     $('#readonly input').prop('checked', true);
