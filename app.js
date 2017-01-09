@@ -64,4 +64,4 @@ app.use('/static', express.static(__dirname + '/static'));
 index.use('/note', require('note'));
 app.use('/api', index);
 
-app.listen(process.env.VCAP_APP_PORT || 3000);
+app.listen(process.env.PORT || 3000);
