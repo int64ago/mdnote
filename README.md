@@ -3,7 +3,7 @@ MDNote
 
 A simple cloud notepad, nothing else...
 
-[Let's make a note!](https://mdnote.xyz)
+[Let's make a note!](https://mdnote.int64ago.org)
 
 ## How to run
 
